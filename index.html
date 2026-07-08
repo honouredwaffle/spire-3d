@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spire</title>
+<meta name="theme-color" content="#87CEEB">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<title>Spire 3D</title>
 <style>
 *{margin:0;padding:0;overflow:hidden}
 body{background:#87CEEB}
@@ -459,6 +464,11 @@ function loop(){
   renderer.render(scene,cam);
 }
 loop();
+
+// Register service worker for PWA
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js');
+}
 
 addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
 </script>
